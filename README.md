@@ -6,6 +6,9 @@
 Use this extension to see your app sales in [MoneyMoney](https://moneymoney-app.com/).  
 You will need an [Appfigures account](https://appfigures.com).
 
+## Requirements
+
+This extension works with MoneyMoney version 2.3.4 (307) Beta or higher.
 
 ## Usage
 
@@ -19,20 +22,8 @@ You will need an [Appfigures account](https://appfigures.com).
 
 ## Authentication
 
-When MoneyMoney asks you for your **password**, please fill in *both* your account password (the web login password) *and* the client API key; **concatenated without a space.**
-
-
-### Example: 
-
-If your password is:  
-`1supersecr3tp@ssword`
-
-…and your **client** key is:  
-`0ae4362ecf898cd9c3156730b5c0cac0` 
-
-…then enter this in MoneyMoney’s password field:  
-`1supersecr3tp@ssword0ae4362ecf898cd9c3156730b5c0cac0`
-
+- Use your web login email address and password.
+- Put your *client key* in the API key field.
 
 ## Signing
 
