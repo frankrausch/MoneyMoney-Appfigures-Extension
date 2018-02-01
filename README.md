@@ -3,7 +3,7 @@
 
 ## What is this?
 
-Use this extension to see your app sales in MoneyMoney.  
+Use this extension to see your app sales in [MoneyMoney](https://moneymoney-app.com/).  
 You will need an [Appfigures account](https://appfigures.com).
 
 
@@ -42,6 +42,6 @@ If you you use pre-release versions or if you make any modifications to the scri
 [Read the MoneyMoney extensions documentation](https://moneymoney-app.com/extensions/) to find out how it works.
 
 
-### License
+## License
 
 MIT License; see the `LICENSE` file in this repository.
