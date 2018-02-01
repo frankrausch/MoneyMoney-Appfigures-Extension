@@ -20,11 +20,8 @@ end
 
 function InitializeSession (protocol, bankCode, username, username2, password, username3)
   accountEmail = username
-
-  -- The API needs a password and a key, but we store both in the password field.
-  -- Since we know that the key is always 32 bytes long, we can easily isolate these two parameters.
-  accountPassword = password:sub(1,-33)
-  clientKey = password:sub(-32)
+  clientKey = username2
+  accountPassword = password
 
   -- This will be used for HTTP Basic Authentication
   httpAuthCredentials = MM.base64(username .. ":" .. accountPassword)
@@ -197,3 +194,5 @@ function plural(i)
   end
   return s
 end
+
+-- SIGNATURE: MCwCFEhQCGX/hz6tlsdO/n1IRccTYE+fAhRdkGENoj5U70Ts73s8PN3ytyDrhA==
