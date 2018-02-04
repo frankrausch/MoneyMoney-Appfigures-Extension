@@ -1,5 +1,5 @@
 WebBanking {
-  version = 1.0,
+  version = 1.01,
   description = "Access your app sales in Appfigures",
   services = { "Appfigures" }
 }
@@ -194,5 +194,3 @@ function plural(i)
   end
   return s
 end
-
--- SIGNATURE: MCwCFEhQCGX/hz6tlsdO/n1IRccTYE+fAhRdkGENoj5U70Ts73s8PN3ytyDrhA==
