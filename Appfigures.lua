@@ -47,6 +47,7 @@ function ListAccounts (knownAccounts)
       type = "AccountTypeOther"
     }
   end
+
   return productAccounts
 end
 
@@ -63,7 +64,6 @@ function RefreshAccount (account, since)
     name = name .. transaction["net_downloads"] .. " download" .. plural(transaction["net_downloads"])
 
     local purpose = ""
-
     purpose = purpose .. transaction["updates"] .. " update" .. plural(transaction["updates"])
 
     if transaction["gifts"] > 0 then
@@ -142,16 +142,17 @@ function requestProducts()
   local url = baseURL .. "products/mine/"
 
   local response = connection:request("GET", url, {}, nil, headers)
+
   local json = JSON(response)
 
   return json:dictionary()
 end
 
-
 function requestTransactions(accountID, startDate)
   local url = baseURL .. "reports/sales/?group_by=date&include_inapps=true&startdate=" .. startDate .. "&products=" .. accountID
 
   local response = connection:request("GET", url, {}, nil, headers)
+
   local json = JSON(response)
 
   return json:dictionary()
@@ -175,9 +176,8 @@ end
 
 function plural(i)
   -- Append an s if the number i is not equal to 1
-  local s = ""
   if i ~= 1 then
-    s = "s"
+    return "s"
   end
-  return s
+  return ""
 end
