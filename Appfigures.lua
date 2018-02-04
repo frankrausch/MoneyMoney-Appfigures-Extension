@@ -8,9 +8,8 @@ local baseURL = "http://api.appfigures.com/v2/"
 
 local accountEmail
 local accountPassword
-local clientKey
 
-local httpAuthCredentials
+local headers
 
 local connection = Connection()
 
@@ -24,7 +23,11 @@ function InitializeSession (protocol, bankCode, username, username2, password, u
   accountPassword = password
 
   -- This will be used for HTTP Basic Authentication
-  httpAuthCredentials = MM.base64(username .. ":" .. accountPassword)
+  local httpAuthCredentials = MM.base64(username .. ":" .. accountPassword)
+  headers = {}
+  headers["Authorization"] = "Basic " .. httpAuthCredentials
+  headers["X-Client-Key"] = clientKey
+
 end
 
 function ListAccounts (knownAccounts)
@@ -118,10 +121,6 @@ function requestCurrency()
 
   local url = baseURL .. "users/" .. accountEmail
 
-  local headers = {}
-  headers["Authorization"] = "Basic " .. httpAuthCredentials
-  headers["X-Client-Key"] = clientKey
-
   local response = connection:request("GET", url, {}, nil, headers)
 
   local json = JSON(response)
@@ -142,10 +141,6 @@ end
 function requestProducts()
   local url = baseURL .. "products/mine/"
 
-  local headers = {}
-  headers["Authorization"] = "Basic " .. httpAuthCredentials
-  headers["X-Client-Key"] = clientKey
-
   local response = connection:request("GET", url, {}, nil, headers)
   local json = JSON(response)
 
@@ -156,10 +151,6 @@ end
 function requestTransactions(accountID, startDate)
   local url = baseURL .. "reports/sales/?group_by=date&include_inapps=true&startdate=" .. startDate .. "&products=" .. accountID
 
-  local headers = {}
-  headers["Authorization"] = "Basic " .. httpAuthCredentials
-  headers["X-Client-Key"] = clientKey
-
   local response = connection:request("GET", url, {}, nil, headers)
   local json = JSON(response)
 
@@ -168,10 +159,6 @@ end
 
 function requestTotal(accountID)
   local url = baseURL .. "reports/sales/?products=" .. accountID
-
-  local headers = {}
-  headers["Authorization"] = "Basic " .. httpAuthCredentials
-  headers["X-Client-Key"] = clientKey
 
   local response = connection:request("GET", url, {}, nil, headers)
   local json = JSON(response)
